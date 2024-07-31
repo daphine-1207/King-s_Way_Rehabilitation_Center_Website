@@ -1,0 +1,446 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    /* Reset styles for better cross-browser consistency */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Basic styling for the body and container */
+    body {
+        /* font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+        line-height: 1.6;
+        background-color: rgb(229, 239, 243);
+    }
+
+    .para {
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    /* Hero section with background image */
+    .hero {
+        position: relative;
+        background-image: url('../static/images/king\'s_way_pic1.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 95vh;
+        /* Adjust height as needed */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0;
+        /* Adjusted to remove extra space */
+    }
+
+    .hero::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+    }
+
+    .content {
+        color: black;
+        /* Ensure text color contrasts with the background image */
+        text-align: center;
+        padding: 30px;
+        background-color: white;
+        /* Optional: add a semi-transparent background for better readability */
+        border-radius: 2px;
+        /* Optional: add rounded corners */
+        width: 100%;
+        /* Adjusted to full width */
+        max-width: 1400px;
+        /* Max width for large screens */
+        margin-top: 0;
+        /* Adjusted to reduce space */
+    }
+
+    .content h2 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bolder;
+    }
+
+    .content p {
+        font-size: 1.2rem;
+        font-family: Times, "Times New Roman", Georgia, serif;
+    }
+
+    .cards {
+        padding: 60px 20px;
+        text-align: center;
+
+    }
+
+    .cards-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        /* Center align cards */
+        gap: 20px;
+        margin-top: 20px;
+        /* Adjust as needed */
+    }
+
+    .card {
+        max-width: 20rem;
+        min-height: 10rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        opacity: 0;
+        transform: translateX(-100px);
+        /* Initial state for animation */
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .card.scroll-in,
+    .card.scroll-in-right {
+        opacity: 1;
+        transform: translateX(0);
+        /* End at original position */
+    }
+
+    .card.scroll-in-right {
+        transform: translateX(0);
+        /* End at original position */
+    }
+
+    .icon {
+        color: rgb(182, 149, 33);
+    }
+
+    .card-body h5 {
+        font-size: 1.5rem;
+        font-family: fantasy;
+    }
+
+    .card-body p {
+        font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+        .cards-container {
+            justify-content: center;
+            /* Center align cards on smaller screens */
+        }
+
+        .card {
+            max-width: 100%;
+        }
+    }
+
+    .network-partners {
+        text-align: center;
+        /* Center align the title */
+        margin-top: 1px;
+        /* Adjusted to reduce space */
+        margin-bottom: 15px;
+    }
+
+    .network-partners h2 {
+        font-size: 2rem;
+        margin-bottom: 50px;
+        font-family: fantasy;
+    }
+
+    .logos-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .logo-item {
+        flex: 1 1 200px;
+        /* Adjust item width as needed */
+        max-width: 200px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo-item img {
+        width: 100px;
+        height: 100px;
+        /* Set a fixed height for all logos */
+        object-fit: contain;
+        /* Ensure the logo fits within the dimensions while maintaining its aspect ratio */
+        border-radius: 20px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        /* Add transition for transform and opacity */
+    }
+
+    .logo-item img:hover {
+        transform: scale(1.1);
+        /* Slightly enlarge the logo on hover */
+        opacity: 0.8;
+        /* Slightly reduce opacity on hover */
+    }
+
+    .logo-item p {
+        margin-top: 5px;
+        /* Space between the logo and the text */
+        text-align: center;
+        font-family: fantasy;
+    }
+
+    .logo-item {
+        opacity: 0;
+        transform: translateX(-100px);
+        /* Initial state for animation */
+        transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+    }
+
+    .logo-item.scroll-in,
+    .logo-item.scroll-in-left {
+        opacity: 1;
+        transform: translateX(0);
+        /* End at original position */
+    }
+
+    .logo-item.scroll-in-left {
+        transform: translateX(0);
+        /* End at original position */
+    }
+
+    .testimonials-container {
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 90%;
+        width: 100%;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        margin-left: 5%;
+    }
+
+    .testimonials-container h1 {
+        color: #333333;
+        margin-bottom: 20px;
+    }
+
+    .testimonial-slider {
+        position: relative;
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .testimonial {
+        min-width: 100%;
+        box-sizing: border-box;
+        padding: 20px;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .testimonial-content p {
+        color: #666666;
+        font-style: italic;
+    }
+
+    .testimonial-author {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+    .testimonial-author img {
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+
+    .testimonial-author h3 {
+        color: #333333;
+        margin: 0;
+    }
+
+    .slider-controls {
+        position: absolute;
+        top: 50%;
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+        transform: translateY(-50%);
+    }
+
+    .slider-controls button {
+        background-color: #aac1af;
+        color: #ffffff;
+        border: none;
+        padding: 10px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .slider-controls button:hover {
+        background-color: #a1d2ac;
+    }
+</style>
+
+<div class="hero"></div>
+
+<div class="content">
+    <h2>Our Target Group</h2>
+    <p>We support individuals facing addiction, life-controlling issues, and mental health challenges. Our goal is to
+        provide compassionate care and empower you on your journey to recovery and well-being.</p>
+</div>
+
+<div class="cards">
+    <div class="cards-container">
+        <!-- First row of cards -->
+        <div class="card text-bg-primary mb-3">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-cross fa-3x icon"></i><br>Rehabilitation Services
+                    (Christ-centered)</h5>
+            </div>
+        </div>
+        <div class="card text-bg-secondary mb-3">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-users fa-3x icon"></i><br>Community Reintegration</h5>
+            </div>
+        </div>
+        <div class="card text-bg-success mb-3">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-medkit fa-3x icon"></i><br>Education on Health and Prevention
+                </h5>
+            </div>
+        </div>
+    </div>
+    <div class="cards-container">
+        <!-- Second row of cards -->
+        <div class="card text-bg-danger mb-3">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-globe fa-3x icon"></i><br>Community Outreach and Awareness</h5>
+            </div>
+        </div>
+        <div class="card text-bg-danger mb-3">
+            <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-handshake fa-3x icon"></i><br>Partnerships for Comprehensive
+                    Care</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="network-partners">
+    <h2>Our Network and Partners</h2>
+    <div class="logos-container">
+        <div class="logo-item">
+            <img src="{% static 'images/petroszone_initiative_logo.jpg' %}" alt="Partner Logo 2" class="logo3">
+            <p>Petroszone Initiative</p>
+        </div>
+        <div class="logo-item">
+            <img src="{% static 'images/charis_bible_college_logo.jpg' %}" alt="Network Logo 1">
+            <p>Charis Bible College</p>
+        </div>
+        <div class="logo-item">
+            <img src="{% static 'images/worship_harvest_logo.png' %}" alt="Network Logo 2">
+            <p>Worship Harvest Joggo</p>
+        </div>
+        <div class="logo-item">
+            <img src="{% static 'images/the_dad_base_logo.jpg' %}" alt="Partner Logo 1">
+            <p>The Dad Base</p>
+        </div>
+    </div>
+</div>
+
+<div class="testimonials-container">
+    <h1>Testimonials</h1>
+
+    <div class="testimonial-slider">
+        <div class="testimonial active">
+            <div class="testimonial-content">
+                <p>"The rehabilitation center changed my life. The staff was supportive, and the programs were
+                    excellent. I feel like a new person!"</p>
+            </div>
+            <div class="testimonial-author">
+                <img src="{% static 'images/testimonial.png' %}" alt="John Doe">
+                <h3>Emmanuel King</h3>
+            </div>
+        </div>
+
+        <div class="testimonial">
+            <div class="testimonial-content">
+                <p>"I was struggling for years, but this center helped me regain control. The care and attention I
+                    received were top-notch."</p>
+            </div>
+            <div class="testimonial-author">
+                <img src="{% static 'images/testimonial.png' %}" alt="Jane Smith">
+                <h3>Ireeta Gershom</h3>
+            </div>
+        </div>
+
+        <div class="testimonial">
+            <div class="testimonial-content">
+                <p>"The programs were very effective, and the staff was always there to help. I'm grateful for the
+                    second chance at life."</p>
+            </div>
+            <div class="testimonial-author">
+                <img src="{% static 'images/testimonial.png' %}" alt="Michael Brown">
+                <h3>Michael Brown</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="slider-controls">
+        <button id="prevBtn">&lt;</button>
+        <button id="nextBtn">&gt;</button>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        function scrollReveal() {
+            const cards = document.querySelectorAll('.card');
+            const logos = document.querySelectorAll('.logo-item');
+
+            cards.forEach((card) => {
+                const cardPosition = card.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+
+                if (cardPosition < screenPosition) {
+                    card.classList.add('scroll-in');
+                }
+            });
+
+            logos.forEach((logo) => {
+                const logoPosition = logo.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+
+                if (logoPosition < screenPosition) {
+                    logo.classList.add('scroll-in-left');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', scrollReveal);
+        window.addEventListener('load', scrollReveal);
+    });
+
+</script>
+
+{% endblock %}
