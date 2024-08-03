@@ -37,8 +37,6 @@ def donate(request):
         form = DonationForm()
     return render(request, 'donate.html', {'form': form})
 
-def thank_you(request):
-    return render(request, 'donations/thank_you.html')
 def subscribe(request):
     if request.method == 'POST':
         email = request.POST.get('email')
