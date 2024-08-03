@@ -1,6 +1,7 @@
 from django.db import models
+import re
+from django.core.exceptions import ValidationError
 
-<<<<<<< HEAD
 class Donation(models.Model):
     PAYMENT_METHODS = [
         ('credit_card', 'Credit Card'),
@@ -18,8 +19,6 @@ class Donation(models.Model):
         return f"{self.name} - {self.amount}"
 
 
-=======
-# Create your models here.
 def validate_name(value):
     if not re.match("^[a-zA-Z ]*$", value):
         raise ValidationError(
@@ -34,4 +33,3 @@ class Subscription(models.Model):
 
     def __str__(self):
         return self.email
->>>>>>> 7c108442faa956b61e0af085f577ae7e2f70f10c
