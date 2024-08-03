@@ -3,43 +3,28 @@
 {% block content %}
 
 <style>
-    /* Reset styles for better cross-browser consistency */
-    * {
+    /* Basic styling for the body and container */
+    body {
+        background-color: rgb(229, 239, 243);
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-    }
-
-    /* Basic styling for the body and container */
-    body {
-        /* font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
-        line-height: 1.6;
-        background-color: rgb(229, 239, 243);
     }
 
     .para {
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     }
 
-    .container {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-
-    /* Hero section with background image */
     .hero {
         position: relative;
         background-image: url('../static/images/king\'s_way_pic1.jpg');
         background-size: cover;
         background-position: center;
         height: 95vh;
-        /* Adjust height as needed */
         display: flex;
         align-items: center;
         justify-content: center;
         margin-top: 0;
-        /* Adjusted to remove extra space */
     }
 
     .hero::after {
@@ -72,7 +57,7 @@
     .content h2 {
         font-size: 3rem;
         margin-bottom: 20px;
-        font-family: 'Times New Roman', Times, serif;
+        font-family: 'Teko', sans-serif;
         font-weight: bolder;
     }
 
@@ -128,8 +113,8 @@
     }
 
     .card-body h5 {
-        font-size: 1.5rem;
-        font-family: fantasy;
+        font-size: 2rem;
+        font-family: 'Teko', sans-serif;
     }
 
     .card-body p {
@@ -156,9 +141,9 @@
     }
 
     .network-partners h2 {
-        font-size: 2rem;
+        font-size: 3rem;
         margin-bottom: 50px;
-        font-family: fantasy;
+        font-family: 'Teko', sans-serif;
     }
 
     .logos-container {
@@ -200,7 +185,8 @@
         margin-top: 5px;
         /* Space between the logo and the text */
         text-align: center;
-        font-family: fantasy;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold;
     }
 
     .logo-item {
@@ -345,30 +331,8 @@
     </div>
 </div>
 
-<div class="network-partners">
-    <h2>Our Network and Partners</h2>
-    <div class="logos-container">
-        <div class="logo-item">
-            <img src="{% static 'images/petroszone_initiative_logo.jpg' %}" alt="Partner Logo 2" class="logo3">
-            <p>Petroszone Initiative</p>
-        </div>
-        <div class="logo-item">
-            <img src="{% static 'images/charis_bible_college_logo.jpg' %}" alt="Network Logo 1">
-            <p>Charis Bible College</p>
-        </div>
-        <div class="logo-item">
-            <img src="{% static 'images/worship_harvest_logo.png' %}" alt="Network Logo 2">
-            <p>Worship Harvest Joggo</p>
-        </div>
-        <div class="logo-item">
-            <img src="{% static 'images/the_dad_base_logo.jpg' %}" alt="Partner Logo 1">
-            <p>The Dad Base</p>
-        </div>
-    </div>
-</div>
-
 <div class="testimonials-container">
-    <h1>Testimonials</h1>
+    <h2>Testimonials</h2>
 
     <div class="testimonial-slider">
         <div class="testimonial active">
@@ -410,6 +374,31 @@
         <button id="nextBtn">&gt;</button>
     </div>
 </div>
+
+<br>
+
+<div class="network-partners">
+    <h2>Our Network and Partners</h2>
+    <div class="logos-container">
+        <div class="logo-item">
+            <img src="{% static 'images/petroszone_initiative_logo.jpg' %}" alt="Partner Logo 2" class="logo3">
+            <p>Petroszone Initiative</p>
+        </div>
+        <div class="logo-item">
+            <img src="{% static 'images/charis_bible_college_logo.jpg' %}" alt="Network Logo 1">
+            <p>Charis Bible College</p>
+        </div>
+        <div class="logo-item">
+            <img src="{% static 'images/worship_harvest_logo.png' %}" alt="Network Logo 2">
+            <p>Worship Harvest Joggo</p>
+        </div>
+        <div class="logo-item">
+            <img src="{% static 'images/the_dad_base_logo.jpg' %}" alt="Partner Logo 1">
+            <p>The Dad Base</p>
+        </div>
+    </div>
+</div>
+
 
 
 <script>
