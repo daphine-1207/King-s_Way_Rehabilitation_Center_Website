@@ -3,97 +3,163 @@
 {% block content %}
 
 <style>
-  
-main {
-    padding: 2rem;
-}
+    main {
+        padding: 2rem;
+        margin-top: 60px;
+    }
 
-.donate-section {
-    background-color: rgb(229, 239, 243);
-    padding: 2rem;
-    margin-bottom: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 10px;
-}
+    h2 {
+        font-family: 'Teko', sans-serif;
+    }
 
-.donation-form {
-    display: flex;
-    flex-direction: column;
-}
+    .impact-plan-container {
+        margin-left: 40px;
+        margin-right: 40px;
+        margin-bottom: 40px;
+    }
 
-.donation-form label {
-    margin-bottom: 0.5rem;
-}
+    .plan-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px solid #ccc;
+    }
 
-.donation-form input, .donation-form select {
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
+    .plan-item:last-child {
+        border-bottom: none;
+    }
 
-.donation-form button {
-    padding: 0.7rem;
-    border: none;
-    background-color: #333;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 4px;
-}
+    .plan-title {
+        font-size: 1.1em;
+        font-weight: bold;
+        font-family: 'Teko', sans-serif;
+    }
 
-.donation-form button:hover {
-    background-color: #555;
-}
+    .plan-percentage {
+        font-size: 1.1em;
+        font-weight: bold;
+    }
 
-.impact-section {
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+    .hero {
+        position: relative;
+        background-image: url('../static/images/king\'s_way_pic1.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 95vh;
+        /* Adjust height as needed */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0;
+        /* Adjusted to remove extra space */
+    }
 
+    .hero::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+    }
+
+    .donate {
+        max-width: 600px;
+        margin-left: 350px;
+        margin-top: 80px;
+        padding: 20px;
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+        color: #007bff;
+        margin-bottom: 20px;
+    }
+
+    .highlight {
+        font-weight: bold;
+        color: #007bff;
+    }
+
+    .copy-button {
+        margin-top: 10px;
+        margin-left: 400px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .copy-button:hover {
+        background-color: #0056b3;
+    }
 
 </style>
 
-    <div class="container text-center">
-        <div class="row">
-          <div class="col-8">
-            <main>
-                <section class="donate-section">
-                    <h2>Support Our Mission</h2>
-                    <p>Your generous donations help us provide essential services to those in need. Together, we can make a difference in the lives of many.</p>
-                    <p>All donations are used to fund our rehabilitation programs, purchase necessary equipment, and support our dedicated staff.</p>
-        
-                    <form method="POST">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <button type="submit">Donate Now</button>
-                    </form>
-                </section>
-        
-                <section class="impact-section">
-                    <h3>Your Impact</h3>
-                    <p>See how your contributions are making a difference:</p>
-                    <ul>
-                        <li>Providing shelter and care for those in recovery</li>
-                        <li>Offering counseling and support services</li>
-                        <li>Facilitating community outreach programs</li>
-                        <li>Enhancing our facilities and resources</li>
-                    </ul>
-                </section>
-            </main>
-        
-          </div>
-          <div class="col-4" class="question">
-           <p>Questions</p> 
-           <p>What does my donations to King's Way do?</p>
-           <p>How can I contribute to Your mission?</p>
-           <p>Can I use Cheque to donate to King's Way?</p>
+<div class="hero"></div>
 
-          </div>
+<div class="donate">
+    <h1>Support Our Cause</h1>
+    <div class="section"> 
+        <h2>Mobile Money</h2>
+        <p class="highlight">MTN: +256 788 055 607</p>
+        <p class="highlight">Airtel: +256 757 362 263</p>
+    </div>
+    <div class="section">
+        <h2>Bank Account</h2>
+        <p>Account Name: <span class="highlight">King's Way Rehabilitation Center</span></p>
+        <p>Account Number: <span class="highlight">123456789</span></p>
+        <p>Bank Name: <span class="highlight">Centenary Bank</span></p>
+        <p>Branch: <span class="highlight">Kampala Main</span></p>
+    </div>
+    <button class="copy-button" onclick="copyToClipboard()">Copy Details</button>
+</div>
+
+<div class="impact-plan-container">
+    <div class="donation-plan">
+        <h2>Our Plan</h2>
+        <p>All donations will go to:</p>
+        <div class="plan-item">
+            <div class="plan-title">Residential Rehabilitation Program</div>
+            <div class="plan-percentage">40%</div>
         </div>
-      </div>
+        <div class="plan-item">
+            <div class="plan-title">Non-residential Rehabilitation Program</div>
+            <div class="plan-percentage">20%</div>
+        </div>
+        <div class="plan-item">
+            <div class="plan-title">Living Free Outreaches</div>
+            <div class="plan-percentage">20%</div>
+        </div>
+        <div class="plan-item">
+            <div class="plan-title">Family Support and Aftercare</div>
+            <div class="plan-percentage">20%</div>
+        </div>
+    </div>
+</div>
 
+<script>
+    function copyToClipboard() {
+        const text = `
+            Mobile Money:
+            MTN: +256 123 456 789
+            Airtel: +256 987 654 321
+
+            Bank Account:
+            Account Name: Charity Organization
+            Account Number: 123456789
+            Bank Name: Example Bank
+            Branch: Kampala Main
+        `;
+        navigator.clipboard.writeText(text)
+            .then(() => alert('Details copied to clipboard!'))
+            .catch(err => alert('Failed to copy details.'));
+    }
+</script>
 
 {% endblock %}
