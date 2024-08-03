@@ -3,10 +3,91 @@
 {% block content %}
 
 <style>
-    
+  
+main {
+    padding: 2rem;
+}
+
+.donate-section {
+    /* background-color: #fff; */
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+}
+
+.donation-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.donation-form label {
+    margin-bottom: 0.5rem;
+}
+
+.donation-form input, .donation-form select {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.donation-form button {
+    padding: 0.7rem;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.donation-form button:hover {
+    background-color: #555;
+}
+
+.impact-section {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 </style>
 
 
+    <div class="container text-center">
+        <div class="row">
+          <div class="col-8">
+            
+    <main>
+        <section class="donate-section">
+            <h2>Support Our Mission</h2>
+            <p>Your generous donations help us provide essential services to those in need. Together, we can make a difference in the lives of many.</p>
+            <p>All donations are used to fund our rehabilitation programs, purchase necessary equipment, and support our dedicated staff.</p>
+
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Donate Now</button>
+            </form>
+        </section>
+
+        <section class="impact-section">
+            <h3>Your Impact</h3>
+            <p>See how your contributions are making a difference:</p>
+            <ul>
+                <li>Providing shelter and care for those in recovery</li>
+                <li>Offering counseling and support services</li>
+                <li>Facilitating community outreach programs</li>
+                <li>Enhancing our facilities and resources</li>
+            </ul>
+        </section>
+    </main>
+          </div>
+          <div class="col-4">col-4</div>
+        </div>
+      </div>
 
 
 
