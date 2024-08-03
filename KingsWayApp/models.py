@@ -1,5 +1,6 @@
 from django.db import models
 
+<<<<<<< HEAD
 class Donation(models.Model):
     PAYMENT_METHODS = [
         ('credit_card', 'Credit Card'),
@@ -17,3 +18,20 @@ class Donation(models.Model):
         return f"{self.name} - {self.amount}"
 
 
+=======
+# Create your models here.
+def validate_name(value):
+    if not re.match("^[a-zA-Z ]*$", value):
+        raise ValidationError(
+            '%(value)s is not a valid name. Only letters and spaces are allowed.',
+            params={'value': value},
+        )
+
+class Subscription(models.Model):
+    name = models.CharField(max_length=100, blank=True, validators=[validate_name])
+    email = models.EmailField(unique=True)
+    subscribed_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email
+>>>>>>> 7c108442faa956b61e0af085f577ae7e2f70f10c
