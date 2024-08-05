@@ -74,6 +74,7 @@
         border-radius: 8px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
+
     h1 {
         color: black;
         margin-bottom: 20px;
@@ -100,17 +101,26 @@
         background-color: #0056b3;
     }
 
+    @media (max-width: 768px) {
+
+        .donate,
+        .impact-plan-container {
+            margin: 20px auto;
+            padding: 15px;
+        }
+    }
 </style>
 
 <div class="hero"></div>
 
 <div class="donate">
     <h1>Support Our Cause</h1>
-    <div class="section"> 
-    <p>Donate directly on our <b>Mobile Money</b>/<b>Mobile Wallet</b> through worldremit.com/westernunion.com/sendwave.com/moneygram.com etc;</p>
+    <div class="section">
+        <p>Donate directly on our <b>Mobile Money</b>/<b>Mobile Wallet</b> through
+            worldremit.com/westernunion.com/sendwave.com/moneygram.com etc;</p>
         <h2>Mobile Money</h2>
-        <p class="highlight">MTN: +256 788 055 607</p>
-        <p class="highlight">Airtel: +256 757 362 263</p>
+        <p>MTN: <span class="highlight"> +256 788 055 607</span></p>
+        <p>Airtel: <span class="highlight"> +256 757 362 263</span></p>
         <p>Both in the names of <b>King Emmanuel</b></p>
     </div>
     <div class="section">
