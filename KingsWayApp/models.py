@@ -1,6 +1,7 @@
 from django.db import models
 import re
 from django.core.exceptions import ValidationError
+from django.core.validators import MinLengthValidator
 
 class Donation(models.Model):
     PAYMENT_METHODS = [
@@ -20,11 +21,15 @@ class Donation(models.Model):
 
 
 def validate_name(value):
+    if len(value) < 2:
+        raise ValidationError('Name must be at least 2 characters long.')
     if not re.match("^[a-zA-Z ]*$", value):
         raise ValidationError(
             '%(value)s is not a valid name. Only letters and spaces are allowed.',
             params={'value': value},
         )
+
+
 
 class Subscription(models.Model):
     name = models.CharField(max_length=100, blank=True, validators=[validate_name])
@@ -33,3 +38,19 @@ class Subscription(models.Model):
 
     def __str__(self):
         return self.email
+
+
+class Order(models.Model):
+    full_name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone_number = models.CharField(max_length=15)
+    delivery_address = models.CharField(max_length=100)
+    PAYMENT_OPTIONS = [
+        ('COD', 'Cash on Delivery'),
+        ('MM', 'Mobile Money'),
+    ]
+    payment_option = models.CharField(max_length=3, choices=PAYMENT_OPTIONS)
+    
+
+    def __str__(self):
+        return f"Order {self.id} by {self.full_name}"
