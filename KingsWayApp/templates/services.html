@@ -3,6 +3,32 @@
 {% block content %}
 
 <style>
+
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 95vh;
+    background-image: url('../static/images/kingswayservices.jpg');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden; 
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5); 
+    backdrop-filter: blur(3px); 
+    z-index: 1; 
+    pointer-events: none; 
+}
+
+
 .services {
     display: flex;
     flex-direction: column;
@@ -13,7 +39,7 @@ h1{
     font-family: 'Teko', sans-serif;
     font-size: 40px;
     text-align: center;
-    margin-top: 60px;
+    margin-top: 25px;
 }
 
 h2 {
@@ -35,7 +61,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform 0.5s;
+    transition: transform 0.7s;
 }
 
 .service-image img {
@@ -104,11 +130,13 @@ h2 {
 
 </style>
 
+<div class="hero"></div>
+
 <div class="services">
     <h1>Services We Offer</h1>
     <div class="service">
         <div class="service-image left">
-            <img src="../static/images/image1.jpg" alt="Residential Rehabilitation Program">
+            <img src="../static/images/service1.jpg" alt="Residential Rehabilitation Program">
         </div>
         <div class="service-text">
             <h2>Residential Rehabilitation Program</h2>
@@ -152,12 +180,12 @@ h2 {
             </ul>
         </div>
         <div class="service-image right">
-            <img src="image2.jpg" alt="Non-residential Rehabilitation Program">
+            <img src="../static/images/services2.jpg" alt="Non-residential Rehabilitation Program">
         </div>
     </div>
     <div class="service">
         <div class="service-image left">
-            <img src="image3.jpg" alt="Living Free Outreaches">
+            <img src="../static/images/services3.jpg" alt="Living Free Outreaches">
         </div>
         <div class="service-text">
             <h2>Living Free Outreaches</h2>
@@ -190,7 +218,7 @@ h2 {
             </ul>
         </div>
         <div class="service-image right">
-            <img src="image4.jpg" alt="Family Support and Aftercare">
+            <img src="../static/images/services4.jpg" alt="Family Support and Aftercare">
         </div>
     </div>
 </div>
