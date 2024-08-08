@@ -177,7 +177,7 @@
     }
 
     .footer .footer-menu ul li a:hover {
-        color: black;
+        color: yellow;
     }
 
 
@@ -242,6 +242,13 @@
     h6 {
         color: yellow;
     }
+
+
+    .custom-border-yellow {
+        border-color: yellow !important;
+    }
+
+    
 </style>
 
 <body>
@@ -309,7 +316,7 @@
                     </div>
                 </div>
                 <div class="col-md-3 mb-4">
-                    <div class="footer-newsletter border border-primary p-3 rounded">
+                    <div class="footer-newsletter border border-warning p-3 rounded custom-border-yellow">
                         <h6>Signup for our Newsletter</h6>
                         <form action="/subscribe/" method="post">
                             {% csrf_token %}
@@ -319,7 +326,7 @@
                                 <input type="email" name="email" class="form-control" placeholder="Enter your email"
                                     required>
                             </div> <br>
-                            <button type="submit" class="btn btn-primary">Subscribe</button>
+                            <button type="submit" class="btn btn-warning text-white custom-border-yellow">Subscribe</button>
                         </form>
                     </div>
                     <br> <br>
