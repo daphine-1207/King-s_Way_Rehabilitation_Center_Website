@@ -23,9 +23,6 @@ def gallery(request):
 def contact(request):
     return render(request, 'contact.html')
 
-# def donate(request):
-#     return render(request, 'donate.html')
-
 def shop(request):
     if request.method == 'POST':
         form = OrderForm(request.POST)
@@ -35,12 +32,13 @@ def shop(request):
                 full_name=order_data['full_name'],
                 email=order_data['email'],
                 phone_number=order_data['phone_number'],
-                payment_option=order_data['payment_option'],  # Corrected key here
-
+                payment_option=order_data['payment_option'],
             )
             messages.success(request, 'Order made successfully!')
+            return redirect('shop') 
     else:
         form = OrderForm()
+    
     return render(request, 'shop.html', {'form': form})
 
 
