@@ -3,119 +3,189 @@
 {% block content %}
 
 <style>
-.image-container img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-top: 20px;
-}
-
-.hero {
-    position: relative;
-    width: 100%;
-    height: 95vh;
-    background-image: url('../static/images/kingswayabout.jpg');
-    background-size: cover;
-    background-position: center;
-    overflow: hidden; 
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.5); /* White overlay with transparency */
-    backdrop-filter: blur(3px); /* Blur effect */
-    z-index: 1; /* Above the background image */
-    pointer-events: none; /* Allow interactions with underlying content */
-}
-
-.text-container {
-    padding: 20px;
-}
-
-@media (min-width: 768px) {
     .image-container img {
-        height: 400px;
-        margin-top: 47px;
-        margin-left: 50px;
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-top: 20px;
     }
 
-    .container2 .centered {
-        font-size: 3rem;
+    .hero-slide {
+        position: relative;
+        width: 100%;
+        height: 70vh;
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
     }
-}
 
-@media (min-width: 1024px) {
+    .hero-slide::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(3px);
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        filter: invert(1);
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+    }
+
+
     .text-container {
-        padding: 40px;
+        padding: 20px;
     }
 
-    .container2 .centered {
-        font-size: 4rem;
+    @media (min-width: 768px) {
+        .image-container img {
+            height: 400px;
+            margin-top: 47px;
+            margin-left: 50px;
+        }
+
+        .container2 .centered {
+            font-size: 3rem;
+        }
     }
-}
-.container2 {
-    position: relative;
-    text-align: center;
-    color: white;
-}
-.centered {
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 40px;
-    padding: 10px;
-    color: white;
-    font-family: Times, "Times New Roman", Georgia, serif;
-}
-img {
-    width: 100%;
-    height: auto;
 
-}
-h2 {
-    text-align: center;
-    font-family: 'Teko', sans-serif;
-    margin-top: 10px;
-    font-weight: 900;
-}
-p {
-    margin-left: 10%;
-    margin-right: 10%;
-}
-.accordion-item {
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 50px;
-}
-.card {
-    margin-bottom: 20px;
-    text-align: left;
-    height: 90%;
-    opacity: 0;
-    transform: translateX(100px);
-    transition: opacity 0.5s, transform 0.5s, box-shadow 0.3s;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-.card:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    transform: translateX(0);
-    opacity: 1;
-}
-.card.show {
-    opacity: 1;
-    transform: translateX(0);
+    @media (min-width: 1024px) {
+        .text-container {
+            padding: 40px;
+        }
+
+        .container2 .centered {
+            font-size: 4rem;
+        }
+    }
+
+    .container2 {
+        position: relative;
+        text-align: center;
+        color: white;
+    }
+
+    .centered {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 40px;
+        padding: 10px;
+        color: white;
+        font-family: Times, "Times New Roman", Georgia, serif;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+
+    }
+
+    h2 {
+        text-align: center;
+        font-family: 'Teko', sans-serif;
+        margin-top: 10px;
+        font-weight: 900;
+    }
+
+    p {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .accordion-item {
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 50px;
+    }
+
+.accordion-button {
+    color: rgb(171, 171, 52); 
+    background-color: transparent; 
+    border: 1px solid transparent; 
 }
 
+
+.accordion-button:not(.collapsed) {
+    color: white; 
+    background-color: rgb(171, 171, 52); 
+    border-color: rgb(171, 171, 52); 
+}
+
+
+.accordion-button::after {
+    background-color: rgba(255, 255, 255, 0.5); 
+}
+
+.accordion-button:focus {
+    box-shadow: none; 
+}
+
+
+    .card {
+        margin-bottom: 20px;
+        text-align: left;
+        height: 90%;
+        opacity: 0;
+        transform: translateX(100px);
+        transition: opacity 0.5s, transform 0.5s, box-shadow 0.3s;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    .card.show {
+        opacity: 1;
+        transform: translateX(0);
+    }
 </style>
 
+<div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="hero-slide" style="background-image: url('../static/images/kingswayabout.jpg');"></div>
+        </div>
+        <div class="carousel-item">
+            <div class="hero-slide" style="background-image: url('../static/images/kingswayservices.jpg');"></div>
+        </div>
+        <div class="carousel-item">
+            <div class="hero-slide" style="background-image: url('../static/images/kingswayshop.jpg');"></div>
+        </div>
+        <div class="carousel-item">
+            <div class="hero-slide" style="background-image: url('../static/images/services2.jpg');"></div>
+        </div>
+        <div class="carousel-item">
+            <div class="hero-slide" style="background-image: url('../static/images/services4.jpg');"></div>
+        </div>
+    </div>
 
-<div class="hero"></div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
 
 <div class="cont">
     <h2> Who We Are </h2>
@@ -167,7 +237,7 @@ p {
             <h2 class="accordion-header">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
                     aria-expanded="true" aria-controls="collapseOne">
-                    Our Mission
+                    Our Mission 
                 </button>
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
@@ -192,6 +262,7 @@ p {
         </div>
     </div>
 </div>
+
 <div class="conti">
     <h2>Our Comprehensive Approach To Recovery</h2>
     <p>
