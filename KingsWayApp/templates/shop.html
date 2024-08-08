@@ -52,13 +52,11 @@
 
 
 </style>
-{% for message in messages %}
-    <div class="alert alert-info">{{ message }}</div>
-{% endfor %}
-
-
 
 <main class="container my-5">
+    {% for message in messages %}
+    <div class="alert alert-info" style="margin-top: 30px;">{{ message }}</div>
+    {% endfor %}
     <h2 class="text-center mb-4">Online Shop</h2>
     <div class="row">
         <div class="col-md-4 mb-4">
