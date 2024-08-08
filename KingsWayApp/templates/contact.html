@@ -14,29 +14,29 @@
         text-align: center;
         color: white;
     }
+  
     .hero {
-        position: relative;
-        background-image: url('../static/images/king\'s_way_pic1.jpg');
-        background-size: cover;
-        background-position: center;
-        height: 95vh;
-        /* Adjust height as needed */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 0;
-        /* Adjusted to remove extra space */
-    }
+    position: relative;
+    width: 100%;
+    height: 95vh;
+    background-image: url('../static/images/kingswaycontactus.jpg');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden; 
+}
 
-    .hero::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 1;
-    }
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5); /* White overlay with transparency */
+    backdrop-filter: blur(3px); /* Blur effect */
+    z-index: 1; /* Above the background image */
+    pointer-events: none; /* Allow interactions with underlying content */
+}
 
     .centered {
         position: absolute;
